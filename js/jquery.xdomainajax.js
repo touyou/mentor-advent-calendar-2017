@@ -17,7 +17,7 @@ jQuery.ajax = (function(_ajax){
         exRegex = RegExp(protocol + '//' + hostname),
         // envFile = "https://raw.githubusercontent.com/touyou/MentorAdventLP/master/js/html.env?token=AAcbIWthMXkWsce2tNhgbucJiLqh77awks5aEZW8wA%3D%3D"
         YQL = 'http' + (/^https/.test(protocol)?'s':'') + '://query.yahooapis.com/v1/public/yql?callback=?',
-        query = 'use "store://ADG59UfSrrAUlnvyQlBHLq" as htmlstring; select * from htmlstring where url="{URL}" and xpath="*"';
+        query = 'select * from htmlstring where url="{URL}" and xpath="*"';
 
     function isExternal(url) {
         return !exRegex.test(url) && /:\/\//.test(url);
@@ -41,7 +41,8 @@ jQuery.ajax = (function(_ajax){
                         (/\?/.test(url) ? '&' : '?') + jQuery.param(o.data)
                     : '')
                 ),
-                format: 'xml'
+                format: 'xml',
+                env: 'http://share.daiki.beer/sys/yql_table.env'
             };
 
             // Since it's a JSONP request
