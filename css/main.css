@@ -1,6 +1,7 @@
 @font-face {
   font-family: 'Futura';
-  src: url(../assets/FuturaDCD-Boo.ttf);
+  src: url(../assets/FuturaDCD-Boo.ttf) format('ttf'),
+  url(../assets/futuradcd_boo.otf) format('otf');
 }
 @font-face {
   font-family: 'Lobster';
