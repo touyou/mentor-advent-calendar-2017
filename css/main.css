@@ -66,7 +66,7 @@ header {
 /* main */
 
 .what-is-advent, .how-to-commit, .commit-btn, .calendar {
-  font-family: "游明朝体", "Yu Mincho", YuMincho, "Hiragino Kaku Gothic ProN", "Hiragino Kaku Gothic Pro", "メイリオ", Meiryo, "ＭＳ ゴシック", sans-serif;
+  font-family: "游明朝体", "Yu Mincho", YuMincho, "Hiragino Mincho ProN", "Hiragino Mincho Pro", "ＭＳ Ｐ明朝", serif;
 }
 
 .inform {
