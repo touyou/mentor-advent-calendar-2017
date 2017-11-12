@@ -339,10 +339,11 @@
       </div>
     </section>
   </main>
+  <!-- http://cors-allow.azurewebsites.net/?url= local用？ -->
   <script type="text/javascript">
     $(function() {
       $.ajax({
-        url: 'http://cors-allow.azurewebsites.net/?url=https://qiita.com/advent-calendar/2017/lit-mentor',
+        url: 'https://qiita.com/advent-calendar/2017/lit-mentor',
         type: 'GET',
         success: function(data) {
           var qiitaDatas = [];
@@ -370,7 +371,7 @@
         }
       });
       $.ajax({
-        url: 'http://cors-allow.azurewebsites.net/?url=https://adventar.org/calendars/2382',
+        url: 'https://adventar.org/calendars/2382',
         type: 'GET',
         success: function(data) {
           var adventarDatas = [];
