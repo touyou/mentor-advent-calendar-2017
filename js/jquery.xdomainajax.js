@@ -54,6 +54,7 @@ jQuery.ajax = (function(_ajax){
             o.success = (function(_success){
                 return function(data) {
 
+                    console.log("success");
                     if (_success) {
                         // Fake XHR callback.
                         _success.call(this, {
@@ -72,7 +73,6 @@ jQuery.ajax = (function(_ajax){
 
                 };
             })(o.success);
-
         }
 
         return _ajax.apply(this, arguments);

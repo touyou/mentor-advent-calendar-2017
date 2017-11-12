@@ -343,10 +343,12 @@
   <!-- http://cors-allow.azurewebsites.net/?url= local用？ -->
   <script type="text/javascript">
     $(function() {
+      console.log("run---");
       $.ajax({
         url: 'https://qiita.com/advent-calendar/2017/lit-mentor',
         type: 'GET',
         success: function(data) {
+          console.log(data);
           var qiitaDatas = [];
           $(data.responseText).find('.adventCalendarCalendar_day').each(function() {
             var day = parseInt($(this).find('.adventCalendarCalendar_date')[0].innerText, 10) - 1;
@@ -369,12 +371,16 @@
               // console.log("<a href=\"https://qiita.com/advent-calendar/2017/lit-mentor/day/new?day=" + day + "\" target=\"_blank\">登録する</a>");
             }
           });
+        },
+        error: function() {
+          console.log("failed connection.");
         }
       });
       $.ajax({
         url: 'https://adventar.org/calendars/2382',
         type: 'GET',
         success: function(data) {
+          console.log(data);
           var adventarDatas = [];
           var jsonDatas = $.parseJSON($($($($(data.responseText).find('.mod-main')[0]).children()[0].innerHTML)[2]).attr('data-react-props'));
           $.each(jsonDatas["entries"], function() {
@@ -393,6 +399,9 @@
               $(this).find('.adventar-link')[0].innerHTML = "<a href=\"https://adventar.org/calendars/2382\" target=\"_blank\">登録する</a>";
               // console.log("<a href=\"https://qiita.com/advent-calendar/2017/lit-mentor/day/new?day=" + day + "\" target=\"_blank\">登録する</a>");
             }
+          },
+          error: function() {
+            console.log("failed connection.");
           });
         }
       });
