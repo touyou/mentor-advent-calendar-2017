@@ -348,7 +348,7 @@
         type: 'GET',
         success: function(data) {
           var qiitaDatas = [];
-          $(data).find('.adventCalendarCalendar_day').each(function() {
+          $(data.responseText).find('.adventCalendarCalendar_day').each(function() {
             var day = parseInt($(this).find('.adventCalendarCalendar_date')[0].innerText, 10) - 1;
             qiitaDatas[day] = this;
           });
@@ -376,7 +376,7 @@
         type: 'GET',
         success: function(data) {
           var adventarDatas = [];
-          var jsonDatas = $.parseJSON($($($($(data).find('.mod-main')[0]).children()[0].innerHTML)[2]).attr('data-react-props'));
+          var jsonDatas = $.parseJSON($($($($(data.responseText).find('.mod-main')[0]).children()[0].innerHTML)[2]).attr('data-react-props'));
           $.each(jsonDatas["entries"], function() {
             var day = parseInt(this["date"].slice(8), 10) - 1;
             adventarDatas[day] = this;
