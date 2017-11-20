@@ -286,6 +286,12 @@ a:hover {
   clear: both;
 }
 
+.calendar p {
+  font-size: 0.2rem;
+  font-weight: normal;
+  text-align: right;
+}
+
 .calendar {
   position: relative;
   padding: 1rem;

@@ -332,7 +332,12 @@
           <td class="empty-cell"></td>
           <td class="empty-cell"></td>
           <td class="empty-cell"></td>
-          <td class="empty-cell"></td>
+          <td class="empty-cell">
+            <p class="calendar-status">
+              登録状況<br>Qiita <span class="qiita-status">0/25人</span><br>
+              Adventar <span class="adventar-status">0/25人</span>
+            </p>
+          </td>
         </tr>
       </table>
     </section>
@@ -366,6 +371,7 @@
               var day = parseInt($(this).find('.adventCalendarCalendar_date')[0].innerText, 10) - 1;
               qiitaDatas[day] = this;
             });
+            var registered = 0;
             $('table.calendar-table tbody td.calendar-cell-base').each(function() {
               var day = parseInt($(this).find('.day-num')[0].innerText, 10) - 1;
               var author  = $(qiitaDatas[day]).find('.adventCalendarCalendar_author');
@@ -374,15 +380,18 @@
                 var contentUrl = content.attr("href");
                 var contentTitle = content[0].innerText;
                 $(this).find('.qiita-link')[0].innerHTML = "<a href=\"https://qiita.com" + contentUrl + "\" target=\"_blank\">" + contentTitle + "</a>";
+                registered++;
               } else if (author[0]) {
                 var authorUrl = author.find('a').attr("href");
                 $(this).find('.qiita-link')[0].innerHTML = "<a href=\"https://qiita.com" + authorUrl + "\" target=\"_blank\">" + authorUrl.slice(1) + "</a>";
+                registered++;
                 // console.log("<a href=\"https://qiita.com" + authorUrl + "\" target=\"_blank\">" + authorUrl.slice(1) + "</a>");
               } else {
                 $(this).find('.qiita-link')[0].innerHTML = "<a href=\"https://qiita.com/advent-calendar/2017/lit-mentor/day/new?day=" + day + "\" target=\"_blank\">登録する</a>";
                 // console.log("<a href=\"https://qiita.com/advent-calendar/2017/lit-mentor/day/new?day=" + day + "\" target=\"_blank\">登録する</a>");
               }
             });
+            $('.qiita-status')[0].innerText = registered + "/25人";
           },
           error: function() {
             console.log("failed connection.");
@@ -399,6 +408,7 @@
               var day = parseInt(this["date"].slice(8), 10) - 1;
               adventarDatas[day] = this;
             });
+            var registered = 0;
             $('table.calendar-table tbody td.calendar-cell-base').each(function() {
               var day = parseInt($(this).find('.day-num')[0].innerText, 10) - 1;
               if (adventarDatas[day]) {
@@ -406,12 +416,14 @@
                 var title = adventarDatas[day]["title"];
                 var url = adventarDatas[day]["url"];
                 $(this).find('.adventar-link')[0].innerHTML = "<a href=\"" + (url == "" ? "https://adventar.org/calendars/2382" : url) + "\" target=\"_blank\">" + (title === null ? authorName : title) + "</a>";
+                registered++;
                 // console.log("<a href=\"https://qiita.com" + authorUrl + "\" target=\"_blank\">" + authorUrl.slice(1) + "</a>");
               } else {
                 $(this).find('.adventar-link')[0].innerHTML = "<a href=\"https://adventar.org/calendars/2382\" target=\"_blank\">登録する</a>";
                 // console.log("<a href=\"https://qiita.com/advent-calendar/2017/lit-mentor/day/new?day=" + day + "\" target=\"_blank\">登録する</a>");
               }
             });
+            $('.adventar-status')[0].innerText = registered + "/25人";
           },
           error: function() {
             console.log("failed connection.");
